@@ -1,0 +1,122 @@
+var _user$project$PigLatin$styleList = {
+	ctor: '::',
+	_0: {ctor: '_Tuple2', _0: 'background-color', _1: 'green'},
+	_1: {
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'color', _1: 'white'},
+		_1: {ctor: '[]'}
+	}
+};
+var _user$project$PigLatin$processConsonantWord = function (res) {
+	var _p0 = res;
+	if (_p0.ctor === 'Just') {
+		return _elm_lang$core$String$fromList(
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				_p0._0._1,
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					_p0._0._0,
+					_elm_lang$core$String$toList('ay'))));
+	} else {
+		return 'way';
+	}
+};
+var _user$project$PigLatin$isCons = function (c) {
+	return function (_p1) {
+		return !A2(_elm_lang$core$List$member, c, _p1);
+	}(
+		{
+			ctor: '::',
+			_0: _elm_lang$core$Native_Utils.chr('a'),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$core$Native_Utils.chr('e'),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$core$Native_Utils.chr('i'),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$core$Native_Utils.chr('o'),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$core$Native_Utils.chr('u'),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		});
+};
+var _user$project$PigLatin$isVowel = function (c) {
+	return !_user$project$PigLatin$isCons(c);
+};
+var _user$project$PigLatin$pigLatin = function (s) {
+	var lstOfChars = _elm_lang$core$String$toList(s);
+	var _p2 = lstOfChars;
+	if (_p2.ctor === '[]') {
+		return '';
+	} else {
+		if (_p2._1.ctor === '[]') {
+			var _p3 = _p2._0;
+			return _user$project$PigLatin$isVowel(_p3) ? A2(
+				_elm_lang$core$Basics_ops['++'],
+				_elm_lang$core$String$fromChar(_p3),
+				'way') : A2(
+				_elm_lang$core$Basics_ops['++'],
+				_elm_lang$core$String$fromChar(_p3),
+				'ay');
+		} else {
+			return _user$project$PigLatin$processConsonantWord(
+				A2(_elm_community$list_extra$List_Extra$splitWhen, _user$project$PigLatin$isVowel, _p2));
+		}
+	}
+};
+var _user$project$PigLatin$palindrome = _elm_lang$core$String$reverse;
+var _user$project$PigLatin$updateFunction = F2(
+	function (myAction, prevModel) {
+		var _p4 = myAction;
+		var _p5 = _p4._0;
+		return A2(
+			_elm_lang$core$Basics_ops['++'],
+			_user$project$PigLatin$palindrome(_p5),
+			_p5);
+	});
+var _user$project$PigLatin$MyOnKeyChange = function (a) {
+	return {ctor: 'MyOnKeyChange', _0: a};
+};
+var _user$project$PigLatin$viewFunction = function (mod) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$id('outer-div'),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$style(_user$project$PigLatin$styleList),
+				_1: {ctor: '[]'}
+			}
+		},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text('Enter Word: '),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$input,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Events$onInput(_user$project$PigLatin$MyOnKeyChange),
+						_1: {ctor: '[]'}
+					},
+					{ctor: '[]'}),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(mod),
+					_1: {ctor: '[]'}
+				}
+			}
+		});
+};
+var _user$project$PigLatin$main = _elm_lang$html$Html$beginnerProgram(
+	{model: '', view: _user$project$PigLatin$viewFunction, update: _user$project$PigLatin$updateFunction})();

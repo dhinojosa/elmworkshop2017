@@ -1,0 +1,51 @@
+var _user$project$PigLatinTest$suite = A2(
+	_elm_community$elm_test$Test$describe,
+	'pig latin',
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_community$elm_test$Test$describe,
+			'empty string',
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_community$elm_test$Test$test,
+					'that a pig latin of empty is empty',
+					function (_p0) {
+						var r = _user$project$PigLatin$pigLatin('');
+						return A2(_elm_community$elm_test$Expect$equal, r, '');
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_community$elm_test$Test$test,
+						'that an a is equal away',
+						function (_p1) {
+							var r = _user$project$PigLatin$pigLatin('a');
+							return A2(_elm_community$elm_test$Expect$equal, r, 'away');
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_community$elm_test$Test$test,
+							'that an b is equal bay',
+							function (_p2) {
+								var result = _user$project$PigLatin$pigLatin('b');
+								return A2(_elm_community$elm_test$Expect$equal, result, 'bay');
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_community$elm_test$Test$test,
+								'that an brain is equal bay',
+								function (_p3) {
+									var result = _user$project$PigLatin$pigLatin('brain');
+									return A2(_elm_community$elm_test$Expect$equal, result, 'ainbray');
+								}),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}),
+		_1: {ctor: '[]'}
+	});
